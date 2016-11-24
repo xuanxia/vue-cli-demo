@@ -18,13 +18,13 @@
         </div>
       </div>
       <div v-if="seller.supports" class="support-count" @click="showDetail">
-        <span class="count">{{seller.supports.length}}个</span>
-        <i class="icon iconfont icon-more"></i>
+        <span class="count">{{seller.supports.length}}个<i class="icon iconfont icon-more"></i></span>
+
       </div>
     </div>
     <div class="bulletin-wrapper">
-      <span class="bulletin-title"></span><span class="bulletin-text">{{seller.bulletin}}</span>
-      <i class="icon iconfont icon-more"></i>
+      <span class="bulletin-title"></span><span class="bulletin-text">{{seller.bulletin}}  <i class="icon iconfont icon-more"></i></span>
+
     </div>
     <div class="background">
       <img :src="seller.avatar" width="100%" height="100%">
@@ -97,7 +97,7 @@
         margin-left: 16px
         font-size: 14px
         .title
-          margin: 2px 0 8px 0
+          height: 28px
           .brand
             display: inline-block
             vertical-align: top
@@ -124,6 +124,7 @@
             margin-right: 4px
             background-size: 12px 12px
             background-repeat: no-repeat
+            vertical-align: top
             &.decrease
               bg-image('decrease_1')
             &.discount
