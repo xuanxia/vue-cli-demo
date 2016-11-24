@@ -36,11 +36,9 @@
           <div class="star-warpper">
             <star :size="48" :score="seller.score"></star>
           </div>
-          <div class="detail-title">
-            <div class="detail-line"></div>
-            <div class="detail-text">优惠信息</div>
-            <div class="detail-line"></div>
-          </div>
+
+          <titlebar :title="discountMessage"></titlebar>
+
           <ul v-if="seller.supports" class="supports">
             <li class="support-item" v-for="item in seller.supports">
               <span class="icon" :class="classMap[item.type]"></span>
@@ -48,12 +46,8 @@
             </li>
           </ul>
 
-          <!-- TODO 抽成组件-->
-          <div class="detail-title">
-            <div class="detail-line"></div>
-            <div class="detail-text">商家公告</div>
-            <div class="detail-line"></div>
-          </div>
+          <titlebar :title="storeMessage"></titlebar>
+
           <div class="bulletin">
               <p class="content">{{seller.bulletin}}</p>
           </div>
@@ -68,6 +62,9 @@
 
 <script type="text/ecmascript-6">
   import star from 'components/star/star';
+  import titlebar from 'components/titlebar/titlebar';
+  const discountMessage = '优惠信息';
+  const storeMessage = '商家公告';
   export default {
     props: {
       seller: {
@@ -76,7 +73,9 @@
     },
     data () {
       return {
-        detailShow: false
+        detailShow: false,
+        discountMessage: discountMessage,
+        storeMessage: storeMessage
       };
     },
     methods: {
@@ -91,7 +90,8 @@
       this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee'];
     },
     components: {
-      star: star
+      star: star,
+      titlebar: titlebar
     }
   };
 </script>
@@ -234,19 +234,6 @@
           .star-warpper
             margin: 10px auto
             text-align: center
-          .detail-title
-            display: flex
-            width: 80%
-            margin: 28px auto 24px auto
-            .detail-line
-              flex: 1
-              position: relative
-              top: -6px
-              border-bottom: 1px solid rgba(255,255,255,0.2)
-            .detail-text
-              padding: 0 12px
-              font-size: 14px
-              font-weight: 700
           .supports
             width: 80%
             margin: 0 auto
